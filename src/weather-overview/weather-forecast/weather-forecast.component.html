@@ -1,0 +1,47 @@
+<div class="text-center mt-2 p-0">
+    <mat-card class="mt-0" style="background-color: #3BB9FF !important;">
+        <h1 style="font-weight: 500;">
+            <img style="width: 42px;" src="../../assets/icons/thermo.svg" alt="No Image">
+         <span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> Weather Forecast </span>
+        </h1>
+    </mat-card>
+    
+</div>
+<ng-container *ngIf="(weatherForecast$ | async).length>0;else noData">
+    <div class="d-flex flex-row flex-wrap justify-content-start mt-3 footer-font">    
+        <ng-container *ngFor="let item of weatherForecast$ | async ">
+            <div class="d-flex flex-column text-center mt-1 p-3 wrap-element">
+                <div class="">{{item?.day}}</div>
+                <div class=""><img class="footer-icons" src="../../assets/icons/{{item?.icon}}.{{item?.format}}" alt="No Image">
+                    <span class="desc-text">
+                        {{item?.description}}
+                    </span>
+                </div>
+                <div>{{item?.minTemp}}° - {{item?.maxTemp}}° c</div>
+            </div>
+        </ng-container>
+    </div>
+</ng-container>
+
+ <ng-template #noData>
+    <ng-container *ngIf="(this.weatherOverviewFacade.errorText$ | async) as errorText;else spinner">
+        <div class=" error-text">
+            <div class="d-flex flex-column text-center align-items-center">
+                <div>
+                    <img class="sad-icon" src="../../assets/icons/sad.svg" alt="No Image">
+                </div>
+                <div>
+                    {{errorText}}
+                </div>
+            </div>          
+          </div>  
+    </ng-container>
+    <ng-template #spinner>
+        <ng-container *ngIf="(this.weatherOverviewFacade.isForecastWeatherLoading)">
+            <div class="d-flex flex-column align-items-center">
+                <mat-spinner diameter='60'></mat-spinner>
+            </div>
+        </ng-container>
+    </ng-template>
+    
+</ng-template>

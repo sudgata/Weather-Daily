@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.error-text{
+    height:100px;
+    width:100%;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    background-color:moccasin;
+}
+
+.sad-icon{
+    width: 30px;
+}
+.mat-progress-spinner circle, .mat-spinner circle {
+    stroke:  #3BB9FF !important;
+}

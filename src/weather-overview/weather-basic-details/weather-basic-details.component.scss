@@ -1,0 +1,45 @@
+.large-size-font{
+    font-size: 70px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.small-size-font{
+    font-size: 38px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.extra-small-size-font{
+    font-size: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.place-font{
+    font-size: 45px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.footer-font{
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500; 
+}
+.footer-icons{
+    width:45px;
+}
+.main-icon{
+    width:220px;
+}
+@media only screen and (max-width: 540px) {
+    .place-font{
+        font-size: 32px;
+    }
+    .small-size-font{
+        font-size: 25px;
+    }
+    .large-size-font{
+        font-size: 60px;
+    }
+    .extra-small-size-font{
+        font-size: 25px;
+    }
+    .footer-font{
+        font-size: 13px;
+    }
+   
+  }

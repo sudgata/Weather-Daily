@@ -1,0 +1,21 @@
+<div class="d-flex flex-column justify-content-center align-items-center">
+    <div >
+        <form>
+            <mat-form-field appearance="standard" class="search-bar-width">
+              <mat-label>Search here</mat-label>
+              <input type="text"
+                     placeholder="Search Weather around the Globe"
+                     matInput
+                     [formControl]="searchControl"
+                     [matAutocomplete]="auto"
+                     (keyup)="search($event.target.value)">
+              <mat-icon matSuffix color="primary">search</mat-icon>
+              <mat-autocomplete #auto="matAutocomplete"> 
+                <mat-option *ngFor="let result of searchResults$ | async" [value]="result?.url" (onSelectionChange)="fetchWeather(result)">
+                  {{result?.name}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </form>        
+    </div>
+</div>

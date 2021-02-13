@@ -1,0 +1,74 @@
+<div class="text-center mt-2 p-0">
+    <mat-card class="mt-0" style="background-color: #3BB9FF !important;">
+        <h1 style="font-weight: 500;">
+            <img style="width: 42px;" src="../../assets/icons/weather.svg" alt="No Image">
+          Current Weather
+        </h1>
+    </mat-card>
+    
+</div>
+<ng-container *ngIf="weather;else noData">
+    <div class="d-flex flex-column align-items-center">
+        <div>
+            <img class="main-icon" src="../../assets/icons/{{weather.icon}}.{{weather?.format}}" alt="No Image">
+        </div>
+        <div class="large-size-font mt-2">
+            {{weather?.temp}}°<span style="font-size: 40px; font-weight: 600;">C</span>
+        </div>
+        <div class="small-size-font mt-4">
+            {{weather?.description}}, {{weather?.minTemp}}°-{{weather?.maxTemp}}°<span style="font-size: 30px; font-weight: 400;">c</span>
+        </div>
+        <div class="extra-small-size-font mt-4">
+            Feels like: {{weather?.feelsLike}}°c
+        </div>
+        <div class="place-font mt-4">
+            {{weather?.placeName}}, {{weather?.country}}
+        </div>
+    </div>
+    
+    <div class="d-flex flex-row justify-content-between mt-5 footer-font">
+        <div class="d-flex flex-column text-center">
+            <div><img class="footer-icons" src="../../assets/icons/sunrise.svg" alt="No Image">Sunrise</div>
+            <div>{{weather?.sunrise}}</div>
+        </div>
+        
+        <div class="d-flex flex-column text-center">
+         <div><img class="footer-icons" src="../../assets/icons/sunset.svg" alt="No Image">Sunset</div>
+         <div>{{weather?.sunset}}</div>
+        </div>
+    
+        <div class="d-flex flex-column text-center">
+            <div><img class="footer-icons" src="../../assets/icons/humidity.svg" alt="No Image">Humidity</div>
+            <div>{{weather?.humidity}}%</div>
+        </div>
+    
+        <div class="d-flex flex-column text-center">
+            <div><img class="footer-icons" src="../../assets/icons/wind.svg" alt="No Image">Wind</div>
+            <div>{{weather?.windSpeed}} km/h</div>
+        </div>
+     </div>    
+</ng-container>
+
+<ng-template #noData>
+    <ng-container *ngIf="(this.weatherOverviewFacade.errorText$ | async) as errorText;else spinner">
+        <div class=" error-text">
+            <div class="d-flex flex-column text-center align-items-center">
+                <div>
+                    <img class="sad-icon" src="../../assets/icons/sad.svg" alt="No Image">
+                </div>
+                <div>
+                    {{errorText}}
+                </div>
+            </div>
+           
+          </div>       
+    </ng-container>
+    <ng-template #spinner>
+        <ng-container *ngIf="(this.weatherOverviewFacade.isCurrentWeatherLoading)">
+            <div class="d-flex flex-column align-items-center">
+                <mat-spinner diameter='80'></mat-spinner>
+            </div>
+        </ng-container>
+    </ng-template>
+    
+</ng-template>
